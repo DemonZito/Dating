@@ -13,7 +13,7 @@ var Protocol = js.Global().Get("location").Get("protocol").String()
 
 func init() {
 	go func() {
-		var res, err = http.Get(Protocol + "//" + Host + "/assets/NZ-AUK-2021.json")
+		var res, err = http.Get(Protocol + "//" + Host + "/assets/holidays.json")
 		if err != nil {
 			fmt.Println(err)
 			return

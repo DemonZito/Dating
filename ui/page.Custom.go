@@ -19,6 +19,7 @@ func (p CustomPage) Page(r page.Router) seed.Seed {
 
 	return page.New(
 		transition.Fade(),
+
 		set.Scrollable(),
 
 		set.If.Small().Portrait(

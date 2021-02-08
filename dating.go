@@ -13,9 +13,10 @@ import (
 )
 
 type Holiday struct {
-	Name     string
-	Image    string
-	Distance string
+	Name        string
+	Image       string
+	Distance    string
+	DisplayTime string
 
 	Time time.Time `mirror:"ignore"`
 
@@ -34,15 +35,21 @@ func readPopular(r io.Reader) {
 	}
 
 	for _, hol := range rawHolidays {
-		t := hol.Start
-		if hol.Substitute {
+		t := time.Date(time.Now().Year(), time.Month(hol.Month), hol.Day, 0, 0, 0, 0, time.Local)
+
+		// If date has already passed, increment the year
+		if time.Now().After(t) {
+			t = t.AddDate(1, 0, 0)
+		}
+		if hol.Generate {
 			continue
 		}
 		Holidays = append(Holidays, Holiday{
-			Name:     hol.Name,
-			Time:     hol.Start,
-			Image:    "https://loremflickr.com/500/500/" + hol.Name + "?lock=1",
-			nextTime: func() time.Time { return t },
+			Name:        hol.Name,
+			Time:        t,
+			Image:       "https://loremflickr.com/500/500/" + hol.Name + "?lock=1",
+			DisplayTime: t.String(),
+			nextTime:    func() time.Time { return t },
 		})
 	}
 }
@@ -51,10 +58,11 @@ var Custom = []Holiday{}
 
 func AddCustom(name string, date time.Time, hours string) {
 	Custom = append(Custom, Holiday{
-		Name:     name,
-		Image:    "https://picsum.photos/100?" + fmt.Sprint(time.Now().UnixNano()),
-		Time:     date,
-		nextTime: func() time.Time { return date },
+		Name:        name,
+		Image:       "https://picsum.photos/100?" + fmt.Sprint(time.Now().UnixNano()),
+		Time:        date,
+		DisplayTime: date.String(),
+		nextTime:    func() time.Time { return date },
 	})
 }
 

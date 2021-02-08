@@ -4,6 +4,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"qlova.org/seed/client"
 	"qlova.org/seed/new/app"
@@ -26,21 +27,25 @@ func main() {
 		app.OnUpdateFound(app.Update()),
 
 		row.Set(),
-		set.If.Small().Portrait(
+		set.If.Medium().Portrait(
 			column.Set(),
 		),
+
+		ui.NewSidebar(),
+		page.AddPages(ui.SplashPage{}, ui.PopularPage{}, ui.CustomPage{}, ui.AddPage{}),
+		page.Set(ui.PopularPage{}),
+		app.SetLoadingPage(ui.SplashPage{}),
 
 		client.OnLoad(
 			client.Run(dating.LoadCustom, js.Func("window.localStorage.getItem").Call(client.NewString("custom.dates"))),
 		),
-
-		ui.NewSidebar(),
-		page.AddPages(ui.PopularPage{}, ui.CustomPage{}, ui.AddPage{}),
-		page.Set(ui.PopularPage{}),
 	)
 
-	if err := DatingApp.Export(); err != nil {
-		fmt.Println(err)
+	if len(os.Args) > 1 && os.Args[1] == "-export" {
+		if err := DatingApp.Export(); err != nil {
+			fmt.Println(err)
+		}
+		return
 	}
 
 	DatingApp.Launch()

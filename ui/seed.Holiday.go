@@ -6,6 +6,7 @@ import (
 
 	"qlova.org/seed"
 	"qlova.org/seed/client/clientfmt"
+	"qlova.org/seed/new/column"
 	"qlova.org/seed/new/feed"
 	"qlova.org/seed/new/image"
 	"qlova.org/seed/new/row"
@@ -36,17 +37,28 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 
 				image.SetTo(f.String(holiday.Image)),
 			),
+			column.New(
+				text.New(style.Text,
+					text.SetSize(rem.New(2.0)),
+					set.If.Small(
+						text.SetSize(rem.New(1.5)),
+					),
+					set.Padding(rem.New(2.0), rem.New(1.0)),
 
-			text.New(style.Text,
-				text.SetSize(rem.New(2.0)),
-				set.If.Small(
-					text.SetSize(rem.New(1.5)),
+					text.SetStringTo(clientfmt.Sprintf("%v until %v",
+						f.String(holiday.Distance),
+						f.String(holiday.Name))),
 				),
-				set.Padding(rem.New(2.0), rem.New(1.0)),
 
-				text.SetStringTo(clientfmt.Sprintf("%v until %v",
-					f.String(holiday.Distance),
-					f.String(holiday.Name))),
+				text.New(style.Text,
+					text.SetSize(rem.New(1.0)),
+					set.If.Small(
+						text.SetSize(rem.New(1.0)),
+					),
+					set.Padding(rem.New(2.0), rem.New(1.0)),
+
+					text.SetStringTo(f.String(holiday.DisplayTime)),
+				),
 			),
 		),
 	)
