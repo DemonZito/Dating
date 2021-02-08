@@ -2,7 +2,7 @@
 
 ## Features
 
-- (WIP) Track popular upcoming holidays in your country (e.g. Christmas).
+- (WIP) Track popular upcoming holidays (e.g. Christmas).
 - (WIP) Add custom event/reminder (e.g. Reminders for upcoming Birthdays or Anniversaries)
 - Custom events are cached for next time you open the app.
 
