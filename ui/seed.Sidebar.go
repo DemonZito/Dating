@@ -28,6 +28,11 @@ func NewSidebar() seed.Seed {
 			set.Width(100%of.Parent),
 			set.Height(rem.New(5.0)),
 		),
+		set.If.Small().Portrait(
+			row.Set(),
+			set.Width(100%of.Parent),
+			set.Height(rem.New(5.0)),
+		),
 		set.Color(rgb.Black),
 		set.MinWidth(rem.New(15.0)),
 		set.Height(100%of.Parent),
@@ -69,6 +74,9 @@ func NewSidebar() seed.Seed {
 		image.New(
 			set.Width(rem.New(6.0)),
 			set.If.Medium(
+				set.Width(rem.New(3.0)),
+			),
+			set.If.Small(
 				set.Width(rem.New(3.0)),
 			),
 			align.Center(),

@@ -27,6 +27,9 @@ func main() {
 		app.OnUpdateFound(app.Update()),
 
 		row.Set(),
+		set.If.Small().Portrait(
+			column.Set(),
+		),
 		set.If.Medium().Portrait(
 			column.Set(),
 		),
