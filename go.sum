@@ -1,7 +1,3 @@
-github.com/DemonZito/seed v0.3.1 h1:Cy7thzvelvYGXHWW9FJ4Dg7ihWqaZ3mzpp3dMZdibn4=
-github.com/DemonZito/seed v0.3.1/go.mod h1:fnUzFl8HW4Y9Iar5VnzBcAPPvIKLJfShuGgT1N57PX0=
-github.com/DemonZito/seed v0.3.2-0.20210206034258-241431a30107 h1:z6Dm/xiWYPf/t+esOkfoBGwRMq1CYThnkKedZNBihXQ=
-github.com/DemonZito/seed v0.3.2-0.20210206034258-241431a30107/go.mod h1:fnUzFl8HW4Y9Iar5VnzBcAPPvIKLJfShuGgT1N57PX0=
 github.com/NYTimes/gziphandler v1.1.1 h1:ZUDjpQae29j0ryrS0u/B8HZfJBtBQHjqw2rQ2cqUQ3I=
 github.com/NYTimes/gziphandler v1.1.1/go.mod h1:n/CVRwUEOgIxrgPvAQhUUr9oeUtvrhMomdKFjzJNB0c=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
@@ -22,6 +18,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/qlova/seed v0.3.2-0.20210207045543-eea00fb541c3 h1:YW1zH82ttbPkitW8SOEuWlMVrOLuWhcpuzKHrRIIjvk=
 github.com/qlova/seed v0.3.2-0.20210207045543-eea00fb541c3/go.mod h1:wAFvD6xwVNJaFNbZrVbVNudjCLop/I6l0HPYsVqnNR0=
+github.com/qlova/seed v0.3.2-0.20210208021447-13597055104c h1:IgdnYM8ycor58KSD+ut8nQiW3Yj0jHPj9KbcEbL16ec=
+github.com/qlova/seed v0.3.2-0.20210208021447-13597055104c/go.mod h1:wAFvD6xwVNJaFNbZrVbVNudjCLop/I6l0HPYsVqnNR0=
 github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
@@ -50,10 +48,12 @@ gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v2 v2.2.2 h1:ZCJp+EgiOT7lHqUV2J862kp8Qj64Jo6az82+3Td9dZw=
 gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
+qlova.org/mirror v0.1.0 h1:VtabTwGVNSz5AuXNCix1E6718fT/ewJX0Vz/c77Ee/Q=
+qlova.org/mirror v0.1.0/go.mod h1:vweKgG67tlmXmyVFDCXaLjPD7sdmc2JF9dOIkyOfuq4=
+qlova.org/mirror v0.1.1 h1:9hmDAj41UPm9UeP8JXag0QGhhO9ucEe11jEOXvpi9RM=
+qlova.org/mirror v0.1.1/go.mod h1:vweKgG67tlmXmyVFDCXaLjPD7sdmc2JF9dOIkyOfuq4=
 qlova.org/mirror v0.1.2 h1:MGqRndinIgMvrs8unPfY+Hk/DDa8ZzOwxPwcIZEE7Qc=
 qlova.org/mirror v0.1.2/go.mod h1:vweKgG67tlmXmyVFDCXaLjPD7sdmc2JF9dOIkyOfuq4=
-qlova.org/seed v0.3.2-0.20210207045543-eea00fb541c3 h1:hotE2lHZMX2UsTrYfyiUXFnICmQVUBfXxAuuEPZC+9U=
-qlova.org/seed v0.3.2-0.20210207045543-eea00fb541c3/go.mod h1:wAFvD6xwVNJaFNbZrVbVNudjCLop/I6l0HPYsVqnNR0=
 qlova.org/should v1.0.2 h1:Cz2nVqxVjX6LPAdnjVh39uwi5BHtlkbRqIroz1yUaoE=
 qlova.org/should v1.0.2/go.mod h1:wco2Ze5mNjSwvZZIoxrmmOFzuxuhSkXO2XYauofWpCU=
 qlova.tech/rgb v1.0.1 h1:hF7ZxKXxVEtpg07d92YkmUTIWOZMYJUZOuX82qQdN3E=
