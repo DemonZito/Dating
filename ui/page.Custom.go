@@ -4,11 +4,13 @@ import (
 	"dating"
 
 	"qlova.org/seed"
+	"qlova.org/seed/client"
 	"qlova.org/seed/new/feed"
 	"qlova.org/seed/new/page"
 	"qlova.org/seed/set"
 	"qlova.org/seed/set/transition"
 	"qlova.org/seed/use/css/units/vmin"
+	"qlova.org/seed/use/js/window"
 	"qlova.tech/rgb"
 )
 
@@ -29,5 +31,7 @@ func (p CustomPage) Page(r page.Router) seed.Seed {
 		page.OnEnter(holidays.Refresh()),
 		set.Color(rgb.Lavender),
 		NewHolidays(holidays),
+
+		client.OnLoad(window.SetInterval(holidays.Refresh().GetScript(), client.NewFloat64(1000))),
 	)
 }

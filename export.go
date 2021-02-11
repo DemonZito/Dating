@@ -8,4 +8,5 @@ func init() {
 	wasm.Export(GetCustom)
 	wasm.Export(SaveCustom)
 	wasm.Export(LoadCustom)
+	wasm.Export(DeleteCustom)
 }

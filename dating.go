@@ -6,6 +6,7 @@ import (
 	"io"
 	"math"
 	"sort"
+	"strconv"
 	"time"
 
 	"qlova.org/seed/client"
@@ -13,10 +14,12 @@ import (
 )
 
 type Holiday struct {
+	ID          string
 	Name        string
 	Image       string
 	Distance    string
 	DisplayTime string
+	IsCustom    string
 
 	Time time.Time `mirror:"ignore"`
 
@@ -63,7 +66,14 @@ func AddCustom(name string, date time.Time, hours string) {
 		Time:        date,
 		DisplayTime: date.String(),
 		nextTime:    func() time.Time { return date },
+		IsCustom:    "True",
 	})
+}
+
+func DeleteCustom(sid string) client.Script {
+	var id, _ = strconv.Atoi(sid)
+	Custom = append(Custom[:id], Custom[id+1:]...)
+	return SaveCustom()
 }
 
 func update(h []Holiday) {
