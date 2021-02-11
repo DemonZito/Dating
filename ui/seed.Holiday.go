@@ -79,7 +79,7 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 					set.If.Small(
 						set.Width(rem.New(2.5)),
 					),
-
+					set.Margin(rem.One),
 					image.Set("cancel.svg"),
 
 					client.OnClick(client.Run(dating.DeleteCustom, js.String{f.Data.Index.GetValue().Call("toString")}), f.Refresh()),
