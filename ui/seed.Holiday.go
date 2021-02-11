@@ -7,6 +7,7 @@ import (
 	"qlova.org/seed"
 	"qlova.org/seed/client/clientfmt"
 	"qlova.org/seed/new/column"
+	"qlova.org/seed/new/expander"
 	"qlova.org/seed/new/feed"
 	"qlova.org/seed/new/image"
 	"qlova.org/seed/new/row"
@@ -59,6 +60,17 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 
 					text.SetStringTo(f.String(holiday.DisplayTime)),
 				),
+			),
+
+			expander.New(),
+
+			image.New(
+				set.Width(rem.New(5.0)),
+				set.If.Small(
+					set.Width(rem.New(2.5)),
+				),
+
+				image.Set("cancel.svg"),
 			),
 		),
 	)
