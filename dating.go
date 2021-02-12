@@ -50,7 +50,7 @@ func readPopular(r io.Reader) {
 		Holidays = append(Holidays, Holiday{
 			Name:        hol.Name,
 			Time:        t,
-			Image:       "https://loremflickr.com/500/500/" + hol.Name + "?lock=1",
+			Image:       "https://loremflickr.com/300/300/" + hol.Name + "?lock=1",
 			DisplayTime: t.String(),
 			nextTime:    func() time.Time { return t },
 		})
@@ -62,7 +62,7 @@ var Custom = []Holiday{}
 func AddCustom(name string, date time.Time, hours string) {
 	Custom = append(Custom, Holiday{
 		Name:        name,
-		Image:       "https://picsum.photos/100?" + fmt.Sprint(time.Now().UnixNano()),
+		Image:       "https://loremflickr.com/300/300" + "?lock=1",
 		Time:        date,
 		DisplayTime: date.String(),
 		nextTime:    func() time.Time { return date },

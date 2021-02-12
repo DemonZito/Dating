@@ -23,7 +23,7 @@ func (p PopularPage) Page(r page.Router) seed.Seed {
 
 		set.Scrollable(),
 		page.OnEnter(holidays.Refresh()),
-		set.Color(rgb.Int(0xe5e25b)),
+		set.Color(rgb.LightGray),
 		NewHolidays(holidays),
 
 		client.OnLoad(window.SetInterval(holidays.Refresh().GetScript(), client.NewFloat64(1000))),

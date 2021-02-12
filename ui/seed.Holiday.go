@@ -76,6 +76,9 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 			visible.When(isCustom,
 				image.New(
 					set.Width(rem.New(5.0)),
+					set.If.Medium(
+						set.Width(rem.New(2.5)),
+					),
 					set.If.Small(
 						set.Width(rem.New(2.5)),
 					),

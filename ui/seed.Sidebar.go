@@ -43,6 +43,8 @@ func NewSidebar() seed.Seed {
 			text.SetSize(rem.New(2.0)),
 			text.Center(),
 			align.Center(),
+
+			client.OnClick(page.RouterOf(col).Goto(AboutPage{})),
 		),
 
 		spacer.New(rem.New(2.0)),
@@ -67,6 +69,18 @@ func NewSidebar() seed.Seed {
 			align.Center(),
 
 			client.OnClick(page.RouterOf(col).Goto(CustomPage{})),
+		),
+
+		spacer.New(rem.New(1.5)),
+
+		text.New(style.Text,
+			text.Set("About"),
+			text.SetColor(rgb.White),
+			text.SetSize(rem.New(1.0)),
+			text.Center(),
+			align.Center(),
+
+			client.OnClick(page.RouterOf(col).Goto(AboutPage{})),
 		),
 
 		expander.New(),

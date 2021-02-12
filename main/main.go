@@ -35,7 +35,7 @@ func main() {
 		),
 
 		ui.NewSidebar(),
-		page.AddPages(ui.SplashPage{}, ui.PopularPage{}, ui.CustomPage{}, ui.AddPage{}),
+		page.AddPages(ui.SplashPage{}, ui.PopularPage{}, ui.CustomPage{}, ui.AddPage{}, ui.AboutPage{}),
 		page.Set(ui.PopularPage{}),
 		app.SetLoadingPage(ui.SplashPage{}),
 

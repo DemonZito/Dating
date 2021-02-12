@@ -24,12 +24,16 @@ func (p CustomPage) Page(r page.Router) seed.Seed {
 
 		set.Scrollable(),
 
+		set.If.Medium().Portrait(
+			set.Width(vmin.New(100)),
+		),
+
 		set.If.Small().Portrait(
 			set.Width(vmin.New(100)),
 		),
 
 		page.OnEnter(holidays.Refresh()),
-		set.Color(rgb.Lavender),
+		set.Color(rgb.LightGray),
 		NewHolidays(holidays),
 
 		client.OnLoad(window.SetInterval(holidays.Refresh().GetScript(), client.NewFloat64(1000))),
