@@ -7,6 +7,7 @@ import (
 	"math"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	"qlova.org/seed/client"
@@ -50,7 +51,7 @@ func readPopular(r io.Reader) {
 		Holidays = append(Holidays, Holiday{
 			Name:        hol.Name,
 			Time:        t,
-			Image:       "https://loremflickr.com/300/300/" + hol.Name + "?lock=1",
+			Image:       "https://loremflickr.com/400/400/" + hol.Name + "?lock=1",
 			DisplayTime: t.String(),
 			nextTime:    func() time.Time { return t },
 		})
@@ -59,13 +60,23 @@ func readPopular(r io.Reader) {
 
 var Custom = []Holiday{}
 
+func constructTime(date time.Time, hours string) time.Time {
+	var timecomps = strings.Split(hours, ":")
+	hour, _ := strconv.Atoi(timecomps[0])
+	minute, _ := strconv.Atoi(timecomps[1])
+	return time.Date(date.Year(), date.Month(), date.Day(), hour, minute, 0, 0, time.Local)
+}
+
 func AddCustom(name string, date time.Time, hours string) {
+	fmt.Println(hours)
+	var datetime = constructTime(date, hours)
+
 	Custom = append(Custom, Holiday{
 		Name:        name,
-		Image:       "https://loremflickr.com/300/300" + "?lock=1",
-		Time:        date,
-		DisplayTime: date.String(),
-		nextTime:    func() time.Time { return date },
+		Image:       "https://loremflickr.com/400/400" + "?lock=1",
+		Time:        datetime,
+		DisplayTime: datetime.String(),
+		nextTime:    func() time.Time { return datetime },
 		IsCustom:    "True",
 	})
 }
@@ -76,6 +87,24 @@ func DeleteCustom(sid string) client.Script {
 	return SaveCustom()
 }
 
+func formatTime(dist time.Duration) string {
+	var days = int(math.Floor(dist.Hours() / 24))
+	var hours = dist.Hours()
+	var minutes = dist.Minutes()
+	var seconds = dist.Seconds()
+
+	// Format in days and hours
+	if days >= 1 {
+		return fmt.Sprintf("%v days, %v hours", days, int(math.Ceil(hours))%24)
+	} else if hours >= 1 {
+		return fmt.Sprintf("%v hours, %v minutes", int(math.Floor(hours)), int(math.Ceil(minutes))%60)
+	} else if minutes >= 1 {
+		return fmt.Sprintf("%v minutes, %v seconds", int(math.Floor(minutes)), int(math.Ceil(seconds))%60)
+	} else {
+		return fmt.Sprintf("%v seconds", int(math.Ceil(seconds)))
+	}
+}
+
 func update(h []Holiday) {
 	for i := range h {
 		if h[i].nextTime == nil {
@@ -83,7 +112,7 @@ func update(h []Holiday) {
 			h[i].nextTime = func() time.Time { return t }
 		}
 		h[i].distance = h[i].nextTime().Sub(time.Now())
-		h[i].Distance = fmt.Sprintf("%v days", int(math.Ceil(h[i].distance.Hours()/24)))
+		h[i].Distance = formatTime(h[i].distance)
 	}
 
 	sort.Slice(h, func(i, j int) bool {

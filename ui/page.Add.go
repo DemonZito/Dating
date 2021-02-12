@@ -58,6 +58,7 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 					text.Set("Date:  "),
 				),
 				datebox.New(style.Text,
+
 					textbox.Update(date),
 				),
 
