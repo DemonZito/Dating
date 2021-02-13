@@ -35,6 +35,7 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 			set.Height(rem.New(10.0)),
 			set.Margin(rem.One, rem.One/2),
 			set.Color(rgb.White),
+			set.Clipped(),
 
 			client.OnLoad(isCustom.SetTo(f.String(holiday.IsCustom))),
 

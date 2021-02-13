@@ -25,6 +25,8 @@ github.com/qlova/seed v0.3.2-0.20210207045543-eea00fb541c3 h1:YW1zH82ttbPkitW8SO
 github.com/qlova/seed v0.3.2-0.20210207045543-eea00fb541c3/go.mod h1:wAFvD6xwVNJaFNbZrVbVNudjCLop/I6l0HPYsVqnNR0=
 github.com/qlova/seed v0.3.2-0.20210208021447-13597055104c h1:IgdnYM8ycor58KSD+ut8nQiW3Yj0jHPj9KbcEbL16ec=
 github.com/qlova/seed v0.3.2-0.20210208021447-13597055104c/go.mod h1:wAFvD6xwVNJaFNbZrVbVNudjCLop/I6l0HPYsVqnNR0=
+github.com/qlova/seed v0.3.2-0.20210213013059-e3b7737b1252 h1:oHD1YoC3+LPlbnodCqaT5rC3RXJ7TBzzJXwYW6LYPGg=
+github.com/qlova/seed v0.3.2-0.20210213013059-e3b7737b1252/go.mod h1:sUVtrXMQBQfrR3b7JZKA2gyBVwjDAEUVscgji2NxJU0=
 github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
@@ -60,6 +62,8 @@ qlova.org/mirror v0.1.1 h1:9hmDAj41UPm9UeP8JXag0QGhhO9ucEe11jEOXvpi9RM=
 qlova.org/mirror v0.1.1/go.mod h1:vweKgG67tlmXmyVFDCXaLjPD7sdmc2JF9dOIkyOfuq4=
 qlova.org/mirror v0.1.2 h1:MGqRndinIgMvrs8unPfY+Hk/DDa8ZzOwxPwcIZEE7Qc=
 qlova.org/mirror v0.1.2/go.mod h1:vweKgG67tlmXmyVFDCXaLjPD7sdmc2JF9dOIkyOfuq4=
+qlova.org/mirror v0.1.3-0.20210211122219-b3c1ea959516 h1:CvSCnqc0lZftN+38T0k21WQ8YhHr1CMRENe0wZPBEaI=
+qlova.org/mirror v0.1.3-0.20210211122219-b3c1ea959516/go.mod h1:vweKgG67tlmXmyVFDCXaLjPD7sdmc2JF9dOIkyOfuq4=
 qlova.org/should v1.0.2 h1:Cz2nVqxVjX6LPAdnjVh39uwi5BHtlkbRqIroz1yUaoE=
 qlova.org/should v1.0.2/go.mod h1:wco2Ze5mNjSwvZZIoxrmmOFzuxuhSkXO2XYauofWpCU=
 qlova.tech/rgb v1.0.1 h1:hF7ZxKXxVEtpg07d92YkmUTIWOZMYJUZOuX82qQdN3E=

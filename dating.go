@@ -68,7 +68,9 @@ func constructTime(date time.Time, hours string) time.Time {
 }
 
 func AddCustom(name string, date time.Time, hours string) {
-	fmt.Println(hours)
+	if hours == "" {
+		hours = "00:00"
+	}
 	var datetime = constructTime(date, hours)
 
 	Custom = append(Custom, Holiday{
