@@ -51,11 +51,11 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 			),
 			column.New(
 				text.New(style.Text,
-					text.SetSize(rem.New(2.0)),
+					text.SetSize(rem.New(1.5)),
 					set.If.Small(
-						text.SetSize(rem.New(1.5)),
+						text.SetSize(rem.New(1.25)),
 					),
-					set.Padding(rem.New(2.0), rem.New(1.0)),
+					set.Padding(rem.New(2.0), nil),
 
 					text.SetStringTo(clientfmt.Sprintf("%v until %v",
 						f.String(holiday.Distance),
@@ -83,7 +83,7 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 					set.If.Small(
 						set.Width(rem.New(2.5)),
 					),
-					set.Margin(rem.One),
+					set.Margin(nil, rem.One, rem.One, rem.One),
 					image.Set("cancel.svg"),
 
 					client.OnClick(client.Run(dating.DeleteCustom, js.String{f.Data.Index.GetValue().Call("toString")}), f.Refresh()),

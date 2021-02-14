@@ -52,7 +52,7 @@ func readPopular(r io.Reader) {
 			Name:        hol.Name,
 			Time:        t,
 			Image:       "https://loremflickr.com/400/400/" + hol.Name + "?lock=1",
-			DisplayTime: t.String(),
+			DisplayTime: t.Format("3:04 pm - _2 Jan 2006"),
 			nextTime:    func() time.Time { return t },
 		})
 	}
@@ -77,7 +77,7 @@ func AddCustom(name string, date time.Time, hours string) {
 		Name:        name,
 		Image:       "https://loremflickr.com/400/400" + "?lock=1",
 		Time:        datetime,
-		DisplayTime: datetime.String(),
+		DisplayTime: datetime.Format("3:04 pm - _2 Jan 2006"),
 		nextTime:    func() time.Time { return datetime },
 		IsCustom:    "True",
 	})
