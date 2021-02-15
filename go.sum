@@ -27,6 +27,10 @@ github.com/qlova/seed v0.3.2-0.20210208021447-13597055104c h1:IgdnYM8ycor58KSD+u
 github.com/qlova/seed v0.3.2-0.20210208021447-13597055104c/go.mod h1:wAFvD6xwVNJaFNbZrVbVNudjCLop/I6l0HPYsVqnNR0=
 github.com/qlova/seed v0.3.2-0.20210213013059-e3b7737b1252 h1:oHD1YoC3+LPlbnodCqaT5rC3RXJ7TBzzJXwYW6LYPGg=
 github.com/qlova/seed v0.3.2-0.20210213013059-e3b7737b1252/go.mod h1:sUVtrXMQBQfrR3b7JZKA2gyBVwjDAEUVscgji2NxJU0=
+github.com/qlova/seed v0.3.2-0.20210214012522-30d9113f021b h1:sfatnqjTQGjWx5I3xmEcen2I7wdeUu1QbsIwygjlI6k=
+github.com/qlova/seed v0.3.2-0.20210214012522-30d9113f021b/go.mod h1:sUVtrXMQBQfrR3b7JZKA2gyBVwjDAEUVscgji2NxJU0=
+github.com/qlova/seed v0.3.2-0.20210215034726-525c1f0f2ce4 h1:hWmoopBmgzIY9FBOjpRLjdhqMzLbSuR5WRJvqxcdhFI=
+github.com/qlova/seed v0.3.2-0.20210215034726-525c1f0f2ce4/go.mod h1:sUVtrXMQBQfrR3b7JZKA2gyBVwjDAEUVscgji2NxJU0=
 github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
