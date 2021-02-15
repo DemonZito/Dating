@@ -3,6 +3,7 @@ package ui
 import (
 	"dating"
 	"dating/ui/style"
+	"time"
 
 	"qlova.org/seed"
 	"qlova.org/seed/client"
@@ -58,8 +59,9 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 					text.Set("Date:  "),
 				),
 				datebox.New(style.Text,
-
 					textbox.Update(date),
+
+					client.OnLoad(date.Set(time.Now().Format("2006-01-02"))),
 				),
 
 				spacer.New(rem.One*2),
@@ -70,6 +72,8 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 				),
 				timebox.New(style.Text,
 					textbox.Update(hours),
+
+					client.OnLoad(hours.Set(time.Now().Format("15:04"))),
 				),
 			),
 		),

@@ -21,6 +21,7 @@ type Holiday struct {
 	Distance    string
 	DisplayTime string
 	IsCustom    string
+	IsExpired   string
 
 	Time time.Time `mirror:"ignore"`
 

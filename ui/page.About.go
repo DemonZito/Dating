@@ -41,7 +41,7 @@ Click on the star to view popular upcoming dates.
 Click on the heart to get started creating your own custom timers.
 
 ## Credits
-This app was created by [Madeleine Day](https://madeleineday.nz), powered by the [QlovaSeed Framework](https://github.com/qlova/seed).			
+This app was created by [Madeleine Day](https://madeleineday.nz), powered by			
 `),
 		),
 
