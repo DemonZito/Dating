@@ -9,4 +9,6 @@ func init() {
 	wasm.Export(SaveCustom)
 	wasm.Export(LoadCustom)
 	wasm.Export(DeleteCustom)
+	wasm.Export(DeleteExpired)
+	wasm.Export(GetExpired)
 }

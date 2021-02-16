@@ -60,6 +60,7 @@ func readPopular(r io.Reader) {
 }
 
 var Custom = []Holiday{}
+var Expired = []Holiday{}
 
 func constructTime(date time.Time, hours string) time.Time {
 	var timecomps = strings.Split(hours, ":")
@@ -90,6 +91,12 @@ func DeleteCustom(sid string) client.Script {
 	return SaveCustom()
 }
 
+func DeleteExpired(sid string) client.Script {
+	var id, _ = strconv.Atoi(sid)
+	Expired = append(Expired[:id], Expired[id+1:]...)
+	return SaveCustom()
+}
+
 func formatTime(dist time.Duration) string {
 	var days = int(math.Floor(dist.Hours() / 24))
 	var hours = dist.Hours()
@@ -108,15 +115,30 @@ func formatTime(dist time.Duration) string {
 	}
 }
 
-func update(h []Holiday) {
+func update(p *[]Holiday, expired bool) {
+	var overwrite = 0
+	var h = *p
+
 	for i := range h {
 		if h[i].nextTime == nil {
 			t := h[i].Time
 			h[i].nextTime = func() time.Time { return t }
 		}
+
 		h[i].distance = h[i].nextTime().Sub(time.Now())
+
+		if !expired && h[i].distance < 0 {
+			h[i].IsExpired = "true"
+			Expired = append(Expired, h[i])
+			continue
+		}
 		h[i].Distance = formatTime(h[i].distance)
+
+		h[overwrite] = h[i]
+		overwrite++
 	}
+
+	*p = h[:overwrite]
 
 	sort.Slice(h, func(i, j int) bool {
 		return h[i].distance < h[j].distance
@@ -124,19 +146,32 @@ func update(h []Holiday) {
 }
 
 func GetHolidays() []Holiday {
-	update(Holidays)
+	update(&Holidays, true)
 
 	return Holidays
 }
 
 func GetCustom() []Holiday {
-	update(Custom)
+	update(&Custom, false)
 
 	return Custom
 }
 
+func GetExpired() []Holiday {
+	update(&Expired, true)
+
+	return Expired
+}
+
 func SaveCustom() client.Script {
-	b, err := json.Marshal(Custom)
+	var SaveDates struct {
+		Custom  []Holiday
+		Expired []Holiday
+	}
+	SaveDates.Custom = Custom
+	SaveDates.Expired = Expired
+
+	b, err := json.Marshal(SaveDates)
 	if err != nil {
 		panic(err)
 	}
@@ -145,8 +180,16 @@ func SaveCustom() client.Script {
 }
 
 func LoadCustom(custom string) {
-	err := json.Unmarshal([]byte(custom), &Custom)
+	var SaveDates struct {
+		Custom  []Holiday
+		Expired []Holiday
+	}
+	err := json.Unmarshal([]byte(custom), &SaveDates)
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	Custom = SaveDates.Custom
+	Expired = SaveDates.Expired
+
 }

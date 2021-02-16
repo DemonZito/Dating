@@ -7,7 +7,6 @@ import (
 	"qlova.org/seed"
 	"qlova.org/seed/client"
 	"qlova.org/seed/client/clientfmt"
-	"qlova.org/seed/client/clientside"
 	"qlova.org/seed/new/column"
 	"qlova.org/seed/new/expander"
 	"qlova.org/seed/new/feed"
@@ -15,6 +14,7 @@ import (
 	"qlova.org/seed/new/row"
 	"qlova.org/seed/new/text"
 	"qlova.org/seed/set"
+	"qlova.org/seed/set/change"
 	"qlova.org/seed/set/visible"
 	"qlova.org/seed/use/css/units/rem"
 	"qlova.org/seed/use/js"
@@ -26,18 +26,12 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 	var holiday dating.Holiday
 	f.Into(&holiday)
 
-	var isCustom = &clientside.Bool{
-		Memory: clientside.LocalMemory,
-	}
-
 	return f.New(
 		row.New(style.Border,
 			set.Height(rem.New(10.0)),
 			set.Margin(rem.One, rem.One/2),
 			set.Color(rgb.White),
 			set.Clipped(),
-
-			client.OnLoad(isCustom.SetTo(f.String(holiday.IsCustom))),
 
 			image.New(
 				set.Width(rem.New(10.0)),
@@ -60,6 +54,11 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 					text.SetStringTo(clientfmt.Sprintf("%v until %v",
 						f.String(holiday.Distance),
 						f.String(holiday.Name))),
+
+					change.When(f.String(holiday.IsExpired),
+						text.SetStringTo(clientfmt.Sprintf("%v",
+							f.String(holiday.Name))),
+					),
 				),
 
 				text.New(style.Text,
@@ -74,7 +73,7 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 			),
 
 			expander.New(),
-			visible.When(isCustom,
+			visible.When(f.String(holiday.IsCustom),
 				image.New(
 					set.Width(rem.New(5.0)),
 					set.If.Medium(
@@ -86,7 +85,18 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 					set.Margin(nil, rem.One, rem.One, rem.One),
 					image.Set("cancel.svg"),
 
-					client.OnClick(client.Run(dating.DeleteCustom, js.String{f.Data.Index.GetValue().Call("toString")}), f.Refresh()),
+					change.When(f.String(holiday.IsExpired),
+						image.Set("confirmed.svg"),
+					),
+
+					client.OnClick(
+						client.If(f.String(holiday.IsExpired),
+							client.Run(dating.DeleteExpired, js.String{f.Data.Index.GetValue().Call("toString")}),
+						).Else(
+							client.Run(dating.DeleteCustom, js.String{f.Data.Index.GetValue().Call("toString")}),
+						),
+						f.Refresh(),
+					),
 				),
 			),
 		),

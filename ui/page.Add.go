@@ -11,12 +11,12 @@ import (
 	"qlova.org/seed/new/button"
 	"qlova.org/seed/new/datebox"
 	"qlova.org/seed/new/expander"
+	"qlova.org/seed/new/hourbox"
 	"qlova.org/seed/new/page"
 	"qlova.org/seed/new/row"
 	"qlova.org/seed/new/spacer"
 	"qlova.org/seed/new/text"
 	"qlova.org/seed/new/textbox"
-	"qlova.org/seed/new/timebox"
 	"qlova.org/seed/set"
 	"qlova.org/seed/set/align"
 	"qlova.org/seed/set/center"
@@ -71,7 +71,7 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 					align.Center(),
 					text.Set("Time:  "),
 				),
-				timebox.New(style.Text,
+				hourbox.New(style.Text,
 					textbox.Update(hours),
 
 					client.OnLoad(hours.Set(time.Now().Format("15:04"))),
