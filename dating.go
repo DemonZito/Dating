@@ -7,7 +7,6 @@ import (
 	"math"
 	"sort"
 	"strconv"
-	"strings"
 	"time"
 
 	"qlova.org/seed/client"
@@ -62,25 +61,16 @@ func readPopular(r io.Reader) {
 var Custom = []Holiday{}
 var Expired = []Holiday{}
 
-func constructTime(date time.Time, hours string) time.Time {
-	var timecomps = strings.Split(hours, ":")
-	hour, _ := strconv.Atoi(timecomps[0])
-	minute, _ := strconv.Atoi(timecomps[1])
-	return time.Date(date.Year(), date.Month(), date.Day(), hour, minute, 0, 0, time.Local)
-}
+func AddCustom(name string, date time.Time) {
 
-func AddCustom(name string, date time.Time, hours string) {
-	if hours == "" {
-		hours = "00:00"
-	}
-	var datetime = constructTime(date, hours)
+	date = date.Local()
 
 	Custom = append(Custom, Holiday{
 		Name:        name,
 		Image:       "https://loremflickr.com/400/400" + "?lock=1",
-		Time:        datetime,
-		DisplayTime: datetime.Format("3:04 pm - _2 Jan 2006"),
-		nextTime:    func() time.Time { return datetime },
+		Time:        date,
+		DisplayTime: date.Format("3:04 pm - _2 Jan 2006"),
+		nextTime:    func() time.Time { return date },
 		IsCustom:    "True",
 	})
 }

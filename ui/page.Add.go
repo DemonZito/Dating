@@ -3,11 +3,11 @@ package ui
 import (
 	"dating"
 	"dating/ui/style"
-	"time"
 
 	"qlova.org/seed"
 	"qlova.org/seed/client"
 	"qlova.org/seed/client/clientside"
+	"qlova.org/seed/client/if/the"
 	"qlova.org/seed/new/button"
 	"qlova.org/seed/new/datebox"
 	"qlova.org/seed/new/expander"
@@ -31,8 +31,8 @@ type AddPage struct{}
 
 func (p AddPage) Page(r page.Router) seed.Seed {
 	var name = new(clientside.String)
-	var date = new(clientside.String)
-	var hours = new(clientside.String)
+	var date = new(clientside.Time)
+	var hours = new(clientside.Duration)
 
 	return page.New(
 		transition.Fade(),
@@ -60,9 +60,9 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 					text.Set("Date:  "),
 				),
 				datebox.New(style.Text,
-					textbox.Update(date),
+					datebox.Update(date),
 
-					client.OnLoad(date.Set(time.Now().Format("2006-01-02"))),
+					//client.OnLoad(date.Set(time.Now())),
 				),
 
 				spacer.New(rem.One*2),
@@ -72,9 +72,7 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 					text.Set("Time:  "),
 				),
 				hourbox.New(style.Text,
-					textbox.Update(hours),
-
-					client.OnLoad(hours.Set(time.Now().Format("15:04"))),
+					hourbox.Update(hours),
 				),
 			),
 		),
@@ -92,9 +90,8 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 				text.Set("DONE"),
 
 				client.OnClick(
-					client.If(js.NewValue("(Date.parse(%v +' '+ %v) > Date.parse(new Date()))", date, hours),
-						//console.Log(js.NewValue("(Date.parse(%v +' '+ %v) > Date.parse(new Date()))", date, hours),
-						client.Run(dating.AddCustom, name, date, hours),
+					client.If(js.NewValue("(%v + %v > Date.parse(new Date()))", date, hours),
+						client.Run(dating.AddCustom, name, the.Time(date, hours)),
 						client.Run(dating.SaveCustom),
 						r.Goto(CustomPage{})),
 				),
