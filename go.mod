@@ -1,10 +1,8 @@
 module dating
 
-go 1.15
-
-replace qlova.org/seed => github.com/qlova/seed v0.3.2-0.20210216022337-7e860e00b5d8
+go 1.16
 
 require (
-	qlova.org/seed v0.3.2-0.20210216022337-7e860e00b5d8
+	qlova.org/seed v0.3.2-0.20210217072607-3d068d44e220
 	qlova.tech/rgb v1.0.1
 )
