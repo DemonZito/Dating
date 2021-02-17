@@ -1,4 +1,4 @@
-const version = "048d98113639f5d4e2326886aeb41b42";self.addEventListener('install', function(event) {
+const version = "434cc5dd85b809d3e51437d47a6ffa63";self.addEventListener('install', function(event) {
 		self.skipWaiting();
 		caches.delete("dynamic");
   event.waitUntil(

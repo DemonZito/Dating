@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"qlova.org/seed/client"
+	"qlova.org/seed/client/clientrpc"
 	"qlova.org/seed/use/js"
 )
 
@@ -182,4 +183,22 @@ func LoadCustom(custom string) {
 	Custom = SaveDates.Custom
 	Expired = SaveDates.Expired
 
+}
+
+func DownloadCustom(request clientrpc.Request) {
+	request.SetHeader("Content-Disposition", "filename=CustomDates.json")
+
+	var SaveDates struct {
+		Custom  []Holiday
+		Expired []Holiday
+	}
+	SaveDates.Custom = Custom
+	SaveDates.Expired = Expired
+
+	json.NewEncoder(request.Writer()).Encode(SaveDates)
+}
+
+func LoadReader(r io.Reader) {
+	b, _ := io.ReadAll(r)
+	LoadCustom(string(b))
 }

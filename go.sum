@@ -79,6 +79,10 @@ qlova.org/mirror v0.1.3-0.20210211122219-b3c1ea959516/go.mod h1:vweKgG67tlmXmyVF
 qlova.org/seed v0.3.2-0.20210216022337-7e860e00b5d8/go.mod h1:sUVtrXMQBQfrR3b7JZKA2gyBVwjDAEUVscgji2NxJU0=
 qlova.org/seed v0.3.2-0.20210217072607-3d068d44e220 h1:ANrl21AB64ZoaRgdH/n+94CN9L0fhLYxIHz0kAfvwQU=
 qlova.org/seed v0.3.2-0.20210217072607-3d068d44e220/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
+qlova.org/seed v0.3.2-0.20210217093543-77db505a2524 h1:fVAEvjBuuPe9apTJPi0G4zQ7r4YWRi2coeoOkOHkS/s=
+qlova.org/seed v0.3.2-0.20210217093543-77db505a2524/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
+qlova.org/seed v0.3.2-0.20210217094635-0244fc84cc2d h1:Fc2r4oVGX6ISG37zwaV1scnjBibbILYdIqwAcyYWeSQ=
+qlova.org/seed v0.3.2-0.20210217094635-0244fc84cc2d/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
 qlova.org/should v1.0.2 h1:Cz2nVqxVjX6LPAdnjVh39uwi5BHtlkbRqIroz1yUaoE=
 qlova.org/should v1.0.2/go.mod h1:wco2Ze5mNjSwvZZIoxrmmOFzuxuhSkXO2XYauofWpCU=
 qlova.tech/rgb v1.0.1 h1:hF7ZxKXxVEtpg07d92YkmUTIWOZMYJUZOuX82qQdN3E=

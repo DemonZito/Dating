@@ -11,4 +11,6 @@ func init() {
 	wasm.Export(DeleteCustom)
 	wasm.Export(DeleteExpired)
 	wasm.Export(GetExpired)
+	wasm.Export(DownloadCustom)
+	wasm.Export(LoadReader)
 }
