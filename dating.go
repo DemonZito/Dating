@@ -11,6 +11,7 @@ import (
 
 	"qlova.org/seed/client"
 	"qlova.org/seed/client/clientrpc"
+	"qlova.org/seed/client/clientsafe"
 	"qlova.org/seed/use/js"
 )
 
@@ -67,7 +68,7 @@ func AddCustom(name string, date time.Time) error {
 	date = date.Local()
 
 	if time.Since(date) > 0 {
-		return fmt.Errorf("Cannot past")
+		return clientsafe.Err(fmt.Errorf("Past Date Error"), "Cannot select a date in the past!")
 	}
 
 	fmt.Println(time.Since(date))

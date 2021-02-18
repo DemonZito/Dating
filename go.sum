@@ -83,6 +83,8 @@ qlova.org/seed v0.3.2-0.20210217093543-77db505a2524 h1:fVAEvjBuuPe9apTJPi0G4zQ7r
 qlova.org/seed v0.3.2-0.20210217093543-77db505a2524/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
 qlova.org/seed v0.3.2-0.20210217094635-0244fc84cc2d h1:Fc2r4oVGX6ISG37zwaV1scnjBibbILYdIqwAcyYWeSQ=
 qlova.org/seed v0.3.2-0.20210217094635-0244fc84cc2d/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
+qlova.org/seed v0.3.2-0.20210217212820-27a2cd68520c h1:ctRUL34YJ59e7jjRjAEZzh/yqsMxOIwBkN+YsF/wRdc=
+qlova.org/seed v0.3.2-0.20210217212820-27a2cd68520c/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
 qlova.org/should v1.0.2 h1:Cz2nVqxVjX6LPAdnjVh39uwi5BHtlkbRqIroz1yUaoE=
 qlova.org/should v1.0.2/go.mod h1:wco2Ze5mNjSwvZZIoxrmmOFzuxuhSkXO2XYauofWpCU=
 qlova.tech/rgb v1.0.1 h1:hF7ZxKXxVEtpg07d92YkmUTIWOZMYJUZOuX82qQdN3E=
