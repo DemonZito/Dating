@@ -6,7 +6,9 @@ import (
 
 	"qlova.org/seed"
 	"qlova.org/seed/client"
+	"qlova.org/seed/client/if/any"
 	"qlova.org/seed/client/screen"
+
 	"qlova.org/seed/new/column"
 	"qlova.org/seed/new/expander"
 	"qlova.org/seed/new/filepicker"
@@ -16,12 +18,14 @@ import (
 	"qlova.org/seed/new/spacer"
 	"qlova.org/seed/new/text"
 	"qlova.org/seed/new/text/rich"
+
 	"qlova.org/seed/set"
 	"qlova.org/seed/set/align"
 	"qlova.org/seed/set/change"
 	"qlova.org/seed/set/visible"
 	"qlova.org/seed/use/css/units/percentage/of"
 	"qlova.org/seed/use/css/units/rem"
+
 	"qlova.tech/rgb"
 )
 
@@ -31,6 +35,8 @@ func NewSidebar() seed.Seed {
 	NewOption := func(title rich.Text, icon string, onclick client.Script) seed.Seed {
 		return row.New(
 			client.OnClick(onclick),
+
+			change.When(screen.TinyToSmall^screen.Portrait, set.Hidden()),
 
 			set.Margin(nil, rem.One),
 			change.When(screen.TinyToSmall^screen.Landscape,
@@ -69,12 +75,19 @@ func NewSidebar() seed.Seed {
 
 		change.When(screen.TinyToSmall^screen.Landscape,
 			set.Height(100%of.Parent),
+			set.PaddingLeft(rem.One),
 		),
 
 		change.When(screen.MediumToHuge,
 			set.Width(rem.New(37.0)),
 			set.MaxWidth(25%of.Parent),
 			set.Height(100%of.Parent),
+			set.PaddingLeft(rem.One),
+		),
+
+		change.When(screen.Medium^screen.Portrait,
+			set.PaddingLeft(rem.One),
+			set.MinWidth(rem.New(10)),
 		),
 
 		set.Gradient{From: rgb.Hex("ffafbd"), To: rgb.Hex("ffc3a0"), Direction: 1i, Side: false},
@@ -104,6 +117,8 @@ func NewSidebar() seed.Seed {
 				change.When(screen.Medium,
 					set.Width(rem.New(6.0)),
 				),
+
+				client.OnClick(page.RouterOf(sidebar).Goto(AboutPage{})),
 			),
 
 			visible.When(screen.MediumToHuge,
@@ -112,16 +127,38 @@ func NewSidebar() seed.Seed {
 
 			// Icons
 			expander.New(change.When(screen.MediumToHuge, set.Hidden())),
-			NewOption("Home", "home.svg", page.RouterOf(sidebar).Goto(AboutPage{})),
+
+			visible.When(screen.TinyToSmall^screen.Portrait,
+				text.New(style.Text, align.Center(),
+
+					text.Set("View Dates"),
+
+					change.When(any.AreTrue(
+						page.Is(PopularPage{}),
+						page.Is(CustomPage{}),
+					), text.Set("Dates")),
+
+					client.OnClick(page.RouterOf(sidebar).Goto(PopularPage{})),
+				),
+			),
+
+			set.Scrollable(),
+
 			NewOption("Popular", "popular.svg", page.RouterOf(sidebar).Goto(PopularPage{})),
 			NewOption("Custom", "calendar.svg", page.RouterOf(sidebar).Goto(CustomPage{})),
 			NewOption("Add", "health-normal.svg", page.RouterOf(sidebar).Goto(AddPage{})),
-			expander.New(change.When(screen.TinyToSmall^screen.Portrait, set.Hidden())),
+			expander.New(),
 			NewOption("Export", "save.svg", client.Download(dating.DownloadCustom)),
 			NewOption("Import", "open-folder.svg", filepicker.SelectFile(func(f filepicker.File) client.Script {
 				return client.Run(dating.LoadReader, f)
 			})),
-			expander.New(change.When(screen.MediumToHuge, set.Hidden())),
+			expander.New(change.When(screen.MediumToHuge, set.Hidden()), change.When(screen.TinyToSmall^screen.Portrait, set.Hidden())),
+
+			visible.When(screen.TinyToSmall^screen.Portrait,
+				spacer.New(rem.One*3),
+				NewOption("Add", "health-normal.svg", page.RouterOf(sidebar).Goto(AddPage{})),
+				spacer.New(rem.One*1),
+			),
 		),
 		//expander.New(),
 	)

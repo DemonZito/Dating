@@ -13,6 +13,7 @@ import (
 	"qlova.org/seed/new/page"
 	"qlova.org/seed/new/row"
 	"qlova.org/seed/set/change"
+	"qlova.org/seed/set/visible"
 	"qlova.org/seed/use/js"
 	"qlova.tech/rgb"
 
@@ -33,9 +34,14 @@ func main() {
 		),
 
 		ui.NewSidebar(),
+
 		page.AddPages(ui.SplashPage{}, ui.PopularPage{}, ui.CustomPage{}, ui.AddPage{}, ui.AboutPage{}),
 		page.Set(ui.PopularPage{}),
 		app.SetLoadingPage(ui.SplashPage{}),
+
+		visible.When(screen.TinyToSmall^screen.Portrait,
+			ui.NewToolbar(),
+		),
 
 		client.OnLoad(
 			client.Run(dating.DownloadPopular),

@@ -98,20 +98,20 @@ func DeleteExpired(sid string) client.Script {
 }
 
 func formatTime(dist time.Duration) string {
-	var days = int(math.Floor(dist.Hours() / 24))
 	var hours = dist.Hours()
+	var days = int(math.Floor(hours)) / 24
 	var minutes = dist.Minutes()
 	var seconds = dist.Seconds()
 
 	// Format in days and hours
 	if days >= 1 {
-		return fmt.Sprintf("%v days, %v hours", days, int(math.Ceil(hours))%24)
+		return fmt.Sprintf("%v days, %v hours", days, int(math.Floor(hours))%24)
 	} else if hours >= 1 {
-		return fmt.Sprintf("%v hours, %v minutes", int(math.Floor(hours)), int(math.Ceil(minutes))%60)
+		return fmt.Sprintf("%v hours, %v minutes", int(math.Floor(hours)), int(math.Floor(minutes))%60)
 	} else if minutes >= 1 {
-		return fmt.Sprintf("%v minutes, %v seconds", int(math.Floor(minutes)), int(math.Ceil(seconds))%60)
+		return fmt.Sprintf("%v minutes, %v seconds", int(math.Floor(minutes)), int(math.Floor(seconds))%60)
 	} else {
-		return fmt.Sprintf("%v seconds", int(math.Ceil(seconds)))
+		return fmt.Sprintf("%v seconds", int(math.Floor(seconds)))
 	}
 }
 

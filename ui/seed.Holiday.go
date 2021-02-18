@@ -34,7 +34,8 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 			set.Color(rgb.White),
 			set.Clipped(),
 
-			set.OnHover(set.Color(rgb.Hex("f7f9fa"))),
+			//TODO fix flicker
+			//set.OnHover(set.Color(rgb.Hex("f7f9fa"))),
 
 			image.New(
 				set.Width(rem.New(10.0)),

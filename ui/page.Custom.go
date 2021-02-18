@@ -10,14 +10,17 @@ import (
 	"qlova.org/seed/client/if/not"
 	"qlova.org/seed/client/poll"
 	"qlova.org/seed/client/screen"
+	"qlova.org/seed/new/expander"
 	"qlova.org/seed/new/feed"
 	"qlova.org/seed/new/page"
+	"qlova.org/seed/new/row"
 	"qlova.org/seed/new/text"
 	"qlova.org/seed/set"
 	"qlova.org/seed/set/align"
 	"qlova.org/seed/set/change"
 	"qlova.org/seed/set/transition"
 	"qlova.org/seed/set/visible"
+	"qlova.org/seed/use/css/units/percentage/of"
 	"qlova.org/seed/use/css/units/rem"
 	"qlova.org/seed/use/css/units/vmin"
 	"qlova.tech/rgb"
@@ -45,6 +48,25 @@ func (p CustomPage) Page(r page.Router) seed.Seed {
 			holidays.Refresh().GetScript(),
 			expiredHolidays.Refresh().GetScript(),
 		)),
+
+		visible.When(screen.TinyToSmall^screen.Portrait,
+			row.New(set.Width(100%of.Parent),
+				text.New(style.Text, text.Center(),
+					text.SetSize(rem.New(1.3)),
+					expander.Set(),
+					text.Set("Popular"),
+
+					client.OnClick(r.Goto(PopularPage{})),
+
+					set.Color(rgb.LightGray),
+				),
+				text.New(style.Text, text.Center(),
+					text.SetSize(rem.New(1.3)),
+					expander.Set(),
+					text.Set("Custom"),
+				),
+			),
+		),
 
 		NewHolidays(holidays),
 

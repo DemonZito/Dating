@@ -8,6 +8,8 @@ import (
 	"qlova.tech/rgb"
 )
 
+const PrimaryColor = rgb.Hex("ffafbd")
+
 var Font = font.New("fixedsys.ttf")
 var Text = seed.Options{Font}
 
