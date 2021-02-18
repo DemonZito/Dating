@@ -62,9 +62,15 @@ func readPopular(r io.Reader) {
 var Custom = []Holiday{}
 var Expired = []Holiday{}
 
-func AddCustom(name string, date time.Time) {
+func AddCustom(name string, date time.Time) error {
 
 	date = date.Local()
+
+	if time.Since(date) > 0 {
+		return fmt.Errorf("Cannot past")
+	}
+
+	fmt.Println(time.Since(date))
 
 	Custom = append(Custom, Holiday{
 		Name:        name,
@@ -74,6 +80,8 @@ func AddCustom(name string, date time.Time) {
 		nextTime:    func() time.Time { return date },
 		IsCustom:    "True",
 	})
+
+	return nil
 }
 
 func DeleteCustom(sid string) client.Script {
@@ -182,7 +190,6 @@ func LoadCustom(custom string) {
 
 	Custom = SaveDates.Custom
 	Expired = SaveDates.Expired
-
 }
 
 func DownloadCustom(request clientrpc.Request) {
@@ -198,7 +205,8 @@ func DownloadCustom(request clientrpc.Request) {
 	json.NewEncoder(request.Writer()).Encode(SaveDates)
 }
 
-func LoadReader(r io.Reader) {
+func LoadReader(r io.Reader) client.Script {
 	b, _ := io.ReadAll(r)
 	LoadCustom(string(b))
+	return SaveCustom()
 }

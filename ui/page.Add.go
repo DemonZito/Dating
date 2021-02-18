@@ -23,7 +23,6 @@ import (
 	"qlova.org/seed/set/transition"
 	"qlova.org/seed/use/css/units/percentage/of"
 	"qlova.org/seed/use/css/units/rem"
-	"qlova.org/seed/use/js"
 	"qlova.tech/rgb"
 )
 
@@ -90,11 +89,9 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 				text.Set("DONE"),
 
 				client.OnClick(
-					client.If(js.NewValue("(%v + %v > Date.parse(new Date()))", date, hours),
-						client.Run(dating.AddCustom, name, the.Time(date, hours)),
-						client.Run(dating.SaveCustom),
-						r.Goto(CustomPage{})),
-				),
+					client.Run(dating.AddCustom, name, the.Time(date, hours)),
+					client.Run(dating.SaveCustom),
+					r.Goto(CustomPage{})),
 			),
 		),
 	)
