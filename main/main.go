@@ -40,6 +40,7 @@ func main() {
 		app.SetLoadingPage(ui.SplashPage{}),
 
 		client.OnLoad(
+			client.Run(dating.DownloadPopular),
 			client.Run(dating.LoadCustom, js.Func("window.localStorage.getItem").Call(client.NewString("custom.dates"))),
 		),
 	)

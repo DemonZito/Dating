@@ -139,6 +139,7 @@ func update(p *[]Holiday, expired bool) {
 	}
 
 	*p = h[:overwrite]
+	h = *p
 
 	sort.Slice(h, func(i, j int) bool {
 		return h[i].distance < h[j].distance

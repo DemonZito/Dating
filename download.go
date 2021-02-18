@@ -11,15 +11,13 @@ import (
 var Host = js.Global().Get("location").Get("host").String()
 var Protocol = js.Global().Get("location").Get("protocol").String()
 
-func init() {
-	go func() {
-		var res, err = http.Get(Protocol + "//" + Host + "/assets/holidays.json")
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		defer res.Body.Close()
+func DownloadPopular() {
+	var res, err = http.Get(Protocol + "//" + Host + "/assets/holidays.json")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer res.Body.Close()
 
-		readPopular(res.Body)
-	}()
+	readPopular(res.Body)
 }

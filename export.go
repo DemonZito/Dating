@@ -13,4 +13,5 @@ func init() {
 	wasm.Export(GetExpired)
 	wasm.Export(DownloadCustom)
 	wasm.Export(LoadReader)
+	wasm.Export(DownloadPopular)
 }
