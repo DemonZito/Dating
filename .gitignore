@@ -15,3 +15,4 @@
 # vendor/
 main/inbed.go
 main/index.wasm
+main/export
