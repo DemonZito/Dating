@@ -7,6 +7,7 @@ import (
 	"qlova.org/seed"
 	"qlova.org/seed/client"
 	"qlova.org/seed/client/clientfmt"
+	"qlova.org/seed/client/screen"
 	"qlova.org/seed/new/column"
 	"qlova.org/seed/new/expander"
 	"qlova.org/seed/new/feed"
@@ -37,7 +38,7 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 
 			image.New(
 				set.Width(rem.New(10.0)),
-				set.If.Small(
+				change.When(screen.TinyToMedium^screen.Portrait,
 					set.Width(rem.New(5.0)),
 				),
 
@@ -48,10 +49,14 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 			column.New(
 				text.New(style.Text,
 					text.SetSize(rem.New(1.5)),
-					set.If.Small(
+					change.When(screen.Small,
 						text.SetSize(rem.New(1.25)),
 					),
+
 					set.Padding(rem.New(2.0), nil),
+					change.When(screen.TinyToMedium^screen.Portrait,
+						set.Padding(rem.New(1.0), nil),
+					),
 
 					text.SetStringTo(clientfmt.Sprintf("%v until %v",
 						f.String(holiday.Distance),
@@ -65,10 +70,13 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 
 				text.New(style.Text,
 					text.SetSize(rem.New(1.0)),
-					set.If.Small(
+					change.When(screen.Small,
 						text.SetSize(rem.New(1.0)),
 					),
 					set.Padding(rem.New(2.0), rem.New(1.0)),
+					change.When(screen.TinyToMedium^screen.Portrait,
+						set.Padding(rem.New(1.0), rem.New(1.0)),
+					),
 
 					text.SetStringTo(f.String(holiday.DisplayTime)),
 				),
@@ -78,10 +86,7 @@ func NewHolidays(f *feed.Feed) seed.Seed {
 			visible.When(f.String(holiday.IsCustom),
 				image.New(
 					set.Width(rem.New(5.0)),
-					set.If.Medium(
-						set.Width(rem.New(2.5)),
-					),
-					set.If.Small(
+					change.When(screen.TinyToMedium^screen.Portrait,
 						set.Width(rem.New(2.5)),
 					),
 					set.Margin(nil, rem.One, rem.One, rem.One),

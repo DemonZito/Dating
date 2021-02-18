@@ -2,9 +2,7 @@ module dating
 
 go 1.16
 
-replace qlova.org/seed => C:\seed
-
 require (
-	qlova.org/seed v0.3.2-0.20210217212820-27a2cd68520c
+	qlova.org/seed v0.3.2-0.20210218063926-58d148879af1
 	qlova.tech/rgb v1.0.1
 )

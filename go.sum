@@ -85,6 +85,14 @@ qlova.org/seed v0.3.2-0.20210217094635-0244fc84cc2d h1:Fc2r4oVGX6ISG37zwaV1scnjB
 qlova.org/seed v0.3.2-0.20210217094635-0244fc84cc2d/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
 qlova.org/seed v0.3.2-0.20210217212820-27a2cd68520c h1:ctRUL34YJ59e7jjRjAEZzh/yqsMxOIwBkN+YsF/wRdc=
 qlova.org/seed v0.3.2-0.20210217212820-27a2cd68520c/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
+qlova.org/seed v0.3.2-0.20210218034751-89e8ae1de17a h1:G+NS1xS2SMhJ7wg9qvFCyKqKOKoX9XuslEhyfK0wUoo=
+qlova.org/seed v0.3.2-0.20210218034751-89e8ae1de17a/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
+qlova.org/seed v0.3.2-0.20210218051929-62a3dd3354c2 h1:w2yQS7j1+LQ+KiVhkyCDErze2HLGSDG5DFraJ3y8uoo=
+qlova.org/seed v0.3.2-0.20210218051929-62a3dd3354c2/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
+qlova.org/seed v0.3.2-0.20210218062140-4d55bf5fcb2b h1:F8db2KaHmP8ntxYwu+crHpduqlL8au7E9h+BO5326pc=
+qlova.org/seed v0.3.2-0.20210218062140-4d55bf5fcb2b/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
+qlova.org/seed v0.3.2-0.20210218063926-58d148879af1 h1:nVMzAWqo/8/5nDXnGvonrn8vmfKaYF0c3YbRSwDosPc=
+qlova.org/seed v0.3.2-0.20210218063926-58d148879af1/go.mod h1:rBEvKktpTKjDAq0sTMCQevn4xEszhjATDCDW4Asiot4=
 qlova.org/should v1.0.2 h1:Cz2nVqxVjX6LPAdnjVh39uwi5BHtlkbRqIroz1yUaoE=
 qlova.org/should v1.0.2/go.mod h1:wco2Ze5mNjSwvZZIoxrmmOFzuxuhSkXO2XYauofWpCU=
 qlova.tech/rgb v1.0.1 h1:hF7ZxKXxVEtpg07d92YkmUTIWOZMYJUZOuX82qQdN3E=

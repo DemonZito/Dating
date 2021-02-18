@@ -7,11 +7,12 @@ import (
 	"os"
 
 	"qlova.org/seed/client"
+	"qlova.org/seed/client/screen"
 	"qlova.org/seed/new/app"
 	"qlova.org/seed/new/column"
 	"qlova.org/seed/new/page"
 	"qlova.org/seed/new/row"
-	"qlova.org/seed/set"
+	"qlova.org/seed/set/change"
 	"qlova.org/seed/use/js"
 	"qlova.tech/rgb"
 
@@ -23,14 +24,11 @@ func main() {
 
 	var DatingApp = app.New("DatingApp",
 		app.SetColor(rgb.Black),
-		app.SetIcon("datingLogo.png?v1"),
+		app.SetIcon("datingLogo.png?v2"),
 		app.OnUpdateFound(app.Update()),
 
 		row.Set(),
-		set.If.Small().Portrait(
-			column.Set(),
-		),
-		set.If.Medium().Portrait(
+		change.When(screen.TinyToSmall^screen.Portrait,
 			column.Set(),
 		),
 

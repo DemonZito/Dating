@@ -8,7 +8,9 @@ import (
 	"qlova.org/seed/client"
 	"qlova.org/seed/client/clientside"
 	"qlova.org/seed/client/if/the"
+	"qlova.org/seed/client/screen"
 	"qlova.org/seed/new/button"
+	"qlova.org/seed/new/column"
 	"qlova.org/seed/new/datebox"
 	"qlova.org/seed/new/expander"
 	"qlova.org/seed/new/hourbox"
@@ -20,6 +22,7 @@ import (
 	"qlova.org/seed/set"
 	"qlova.org/seed/set/align"
 	"qlova.org/seed/set/center"
+	"qlova.org/seed/set/change"
 	"qlova.org/seed/set/transition"
 	"qlova.org/seed/use/css/units/percentage/of"
 	"qlova.org/seed/use/css/units/rem"
@@ -37,8 +40,7 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 		transition.Fade(),
 
 		textbox.New(style.Text, style.Border,
-			set.MinWidth(rem.New(30)),
-			set.Width(50%of.Parent),
+			set.Width(75%of.Parent),
 			set.MaxWidth(100%of.Parent),
 			set.Margin(nil, rem.New(0.5)),
 			align.Center(),
@@ -46,13 +48,22 @@ func (p AddPage) Page(r page.Router) seed.Seed {
 			text.SetSize(rem.New(3.0)),
 			text.Center(),
 
-			textbox.SetPlaceholder("Name of Event"),
+			textbox.SetPlaceholder("Name"),
+
+			//change.When(screen.TinyToSmall,
+			//textbox.SetPlaceholder("Name"),
+			//),
 			textbox.Update(name),
 		),
 
 		spacer.New(rem.One*3),
 
 		row.New(
+			change.When(screen.TinyToSmall,
+				column.Set(),
+				set.MaxWidth(75%of.Parent),
+				align.Center(),
+			),
 			center.This(
 				text.New(style.Text,
 					align.Center(),

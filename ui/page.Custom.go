@@ -9,11 +9,13 @@ import (
 	"qlova.org/seed/client"
 	"qlova.org/seed/client/if/not"
 	"qlova.org/seed/client/poll"
+	"qlova.org/seed/client/screen"
 	"qlova.org/seed/new/feed"
 	"qlova.org/seed/new/page"
 	"qlova.org/seed/new/text"
 	"qlova.org/seed/set"
 	"qlova.org/seed/set/align"
+	"qlova.org/seed/set/change"
 	"qlova.org/seed/set/transition"
 	"qlova.org/seed/set/visible"
 	"qlova.org/seed/use/css/units/rem"
@@ -32,11 +34,7 @@ func (p CustomPage) Page(r page.Router) seed.Seed {
 
 		set.Scrollable(),
 
-		set.If.Medium().Portrait(
-			set.Width(vmin.New(100)),
-		),
-
-		set.If.Small().Portrait(
+		change.When(screen.TinyToSmall^screen.Portrait,
 			set.Width(vmin.New(100)),
 		),
 
