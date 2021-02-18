@@ -23,7 +23,7 @@ func main() {
 
 	var DatingApp = app.New("DatingApp",
 		app.SetColor(rgb.Black),
-		app.SetIcon("heart-plus.png"),
+		app.SetIcon("datingLogo.png?v1"),
 		app.OnUpdateFound(app.Update()),
 
 		row.Set(),

@@ -27,7 +27,7 @@ func (p AboutPage) Page(r page.Router) seed.Seed {
 	return page.New(
 		transition.Fade(),
 		set.Scrollable(),
-		set.Color(rgb.LightGray),
+		set.Color(rgb.White),
 		markdown.New(style.Text,
 			set.Margin(rem.One, nil),
 			markdown.Set(md.Welcome),

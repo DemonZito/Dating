@@ -41,7 +41,7 @@ func (p CustomPage) Page(r page.Router) seed.Seed {
 		),
 
 		page.OnEnter(holidays.Refresh()),
-		set.Color(rgb.LightGray),
+		set.Color(rgb.White),
 
 		poll.Every(time.Second/2, client.NewScript(
 			holidays.Refresh().GetScript(),

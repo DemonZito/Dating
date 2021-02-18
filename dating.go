@@ -75,7 +75,7 @@ func AddCustom(name string, date time.Time) error {
 
 	Custom = append(Custom, Holiday{
 		Name:        name,
-		Image:       "https://loremflickr.com/400/400" + "?lock=1",
+		Image:       "https://loremflickr.com/400/400/" + name + "?lock=1",
 		Time:        date,
 		DisplayTime: date.Format("3:04 pm - _2 Jan 2006"),
 		nextTime:    func() time.Time { return date },

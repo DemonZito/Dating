@@ -14,5 +14,5 @@ var Text = seed.Options{Font}
 var Border = seed.Options{
 	set.Border(set.Solid),
 	set.BorderColor(rgb.Black),
-	set.BorderWidth(px.New(3.0)),
+	set.BorderWidth(px.New(1.0)),
 }
