@@ -6,13 +6,25 @@ import (
 	"fmt"
 	"net/http"
 	"syscall/js"
+	"time"
 )
 
 var Host = js.Global().Get("location").Get("host").String()
 var Protocol = js.Global().Get("location").Get("protocol").String()
 
+var Location *time.Location
+
+func SetTimeLocation() {
+	location, err := time.LoadLocation(js.Global().Get("Intl").Call("DateTimeFormat").Call("resolvedOptions").Get("timeZone").String())
+	if err == nil {
+		Location = location
+	} else {
+		fmt.Println("Invalid Location", err)
+	}
+}
+
 func DownloadPopular() {
-	var res, err = http.Get(Protocol + "//" + Host + "/assets/holidays.json")
+	res, err := http.Get(Protocol + "//" + Host + "/assets/holidays.json")
 	if err != nil {
 		fmt.Println(err)
 		return

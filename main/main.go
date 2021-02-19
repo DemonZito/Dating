@@ -5,6 +5,7 @@ package main
 import (
 	"fmt"
 	"os"
+	_ "time/tzdata"
 
 	"qlova.org/seed/client"
 	"qlova.org/seed/client/screen"
@@ -45,6 +46,7 @@ func main() {
 
 		client.OnLoad(
 			client.Run(dating.DownloadPopular),
+			client.Run(dating.SetTimeLocation),
 			client.Run(dating.LoadCustom, js.Func("window.localStorage.getItem").Call(client.NewString("custom.dates"))),
 		),
 	)

@@ -5,6 +5,7 @@ package main
 
 import (
 	_ "dating"
+	_ "time/tzdata"
 
 	"qlova.org/seed/use/wasm"
 )

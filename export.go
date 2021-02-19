@@ -14,4 +14,5 @@ func init() {
 	wasm.Export(DownloadCustom)
 	wasm.Export(LoadReader)
 	wasm.Export(DownloadPopular)
+	wasm.Export(SetTimeLocation)
 }

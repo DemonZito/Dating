@@ -64,14 +64,11 @@ var Custom = []Holiday{}
 var Expired = []Holiday{}
 
 func AddCustom(name string, date time.Time) error {
-
-	date = date.Local()
+	date = date.In(Location)
 
 	if time.Since(date) > 0 {
 		return clientsafe.Err(fmt.Errorf("Past Date Error"), "Cannot select a date in the past!")
 	}
-
-	fmt.Println(time.Since(date))
 
 	Custom = append(Custom, Holiday{
 		Name:        name,
