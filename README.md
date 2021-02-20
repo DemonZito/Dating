@@ -5,6 +5,7 @@
 - Track popular upcoming holidays (e.g. Christmas).
 - Add custom event/reminder (e.g. Reminders for upcoming Birthdays or Anniversaries)
 - Custom events are cached for next time you open the app.
+- Export and import custom dates to share on all devices.
 
 ### Planned
 
